@@ -97,6 +97,18 @@
         [[UINavigationBar appearance] setBarTintColor:config.globalBackgroundColor];
     }
     [UINavigationBar appearance].tintColor = config.itemColor;
+    
+    
+    NSMutableDictionary *itemAttrDict = @{}.mutableCopy;
+    if (config.itemColor) {
+        [itemAttrDict setObject:config.itemColor forKey:NSForegroundColorAttributeName];
+    }
+    if (config.itemFont) {
+         [itemAttrDict setObject:config.itemFont forKey:NSFontAttributeName];
+    }
+    // 设置导航上item按钮的文字颜色和大小
+    [[UIBarButtonItem appearance] setTitleTextAttributes:itemAttrDict forState:UIControlStateNormal];
+    
     NSMutableDictionary *attrDict = @{}.mutableCopy;
     if (config.titleFont) {
         [attrDict setObject:config.titleFont forKey:NSFontAttributeName];
@@ -144,7 +156,7 @@
 
 - (NavigationConfig *)navConfig {
     if (_navConfig == nil) {
-        _navConfig = [NavigationConfig defaultConfig];
+        _navConfig = [NavigationConfig sharedInstance];
     }
     return _navConfig;
 }

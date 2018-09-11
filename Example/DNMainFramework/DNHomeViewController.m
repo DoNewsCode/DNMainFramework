@@ -7,6 +7,7 @@
 //
 
 #import "DNHomeViewController.h"
+#import "DNViewController.h"
 
 @interface DNHomeViewController ()
 
@@ -21,8 +22,13 @@
     self.navigationItem.title = @"首页";
     
    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"点我" style:(UIBarButtonItemStyleDone) target:nil action:nil];
-    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:12], NSForegroundColorAttributeName : [UIColor orangeColor]} forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"点我" style:(UIBarButtonItemStyleDone) target:self action:@selector(s_clickEvent)];
+//    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:12], NSForegroundColorAttributeName : [UIColor orangeColor]} forState:UIControlStateNormal];
+}
+
+- (void)s_clickEvent {
+    DNViewController *vc = [[DNViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

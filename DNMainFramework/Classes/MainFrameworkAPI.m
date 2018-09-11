@@ -18,7 +18,6 @@
 @property (nonatomic, copy) NSString *bundle;
 @property (nonatomic, copy) void (^configTabBarBlock)(NXTabBarConfig *config);
 @property (nonatomic, copy) void (^configNavBarBlock)(NavigationConfig *config);
-//@property (nonatomic, strong) NavigationConfig *config;
 
 @end
 
@@ -51,6 +50,7 @@
 }
 
 - (UITabBarController *)rootTabBarControllerAndCustomTabBar:(UITabBar *)customBar {
+    
     NXTabBarController *tab = [[NXTabBarController alloc] initWithCustomTabBar:customBar];
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:self.bundle ofType:@"bundle"];
     
@@ -72,7 +72,6 @@
 
 - (void)updateNavWithConfig:(void (^)(NavigationConfig *))configBlock {
     if (configBlock) {
-//        [[NavigationConfig sharedInstance] updateNavWithConfig:configBlock];
         self.configNavBarBlock = configBlock;
     }
 }

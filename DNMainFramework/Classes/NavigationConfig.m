@@ -10,12 +10,24 @@
 
 @implementation NavigationConfig
 
-+ (instancetype)defaultConfig {
++ (instancetype)sharedInstance {
+    static NavigationConfig *_instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [NavigationConfig defaultConfig];
+    });
+    return _instance;
+}
 
++ (instancetype)defaultConfig {
     NavigationConfig *config = [[NavigationConfig alloc] init];
     config.globalBackgroundColor = [UIColor whiteColor];
     config.bottomLineColor = [UIColor grayColor];
     return config;
+}
+
+- (UIImage *)backIcon {
+    return [_backIcon imageWithRenderingMode:(UIImageRenderingModeAlwaysOriginal)];
 }
 
 - (void)updateNavWithConfig:(void (^)(NavigationConfig *))configBlock {

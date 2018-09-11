@@ -7,6 +7,7 @@
 //
 
 #import "NXNavigationController.h"
+#import "NavigationConfig.h"
 
 #define ScreenWidth  [UIScreen mainScreen].bounds.size.width
 #define kScale  ScreenWidth/375.0
@@ -42,10 +43,26 @@
     if (self.viewControllers.count) {
         viewController.hidesBottomBarWhenPushed = YES;
         self.interactivePopGestureRecognizer.delegate = nil; //设置后退的手势
+        if (![NavigationConfig sharedInstance].backIcon) {
+            NSAssert([NavigationConfig sharedInstance].backIcon, @"请设置返回icon");
+        } else {
+            UIBarButtonItem *back = [[UIBarButtonItem alloc]initWithImage:[NavigationConfig sharedInstance].backIcon style:UIBarButtonItemStylePlain target:self action:@selector(__backClickEvent)];
+            viewController.navigationItem.leftBarButtonItem = back;
+        }
     }else{
         viewController.hidesBottomBarWhenPushed = NO;
     }
     [super pushViewController:viewController animated:animated];
+}
+
+- (void)__backClickEvent{
+    
+    if (self.presentingViewController != nil){
+        [self dismissViewControllerAnimated:NO completion:nil];
+    } else{
+        [self popViewControllerAnimated:YES];
+    }
+    
 }
 
 #pragma mark - public method
