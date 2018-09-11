@@ -23,6 +23,10 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		B189FB13214796C400A9D88B /* DNHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B189FB12214796C400A9D88B /* DNHomeViewController.m */; };
+		B189FB16214796CE00A9D88B /* DNGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B189FB15214796CE00A9D88B /* DNGameViewController.m */; };
+		B189FB19214796D800A9D88B /* DNMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B189FB18214796D800A9D88B /* DNMeViewController.m */; };
+		B189FB1C2147AFA800A9D88B /* NXTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = B189FB1A2147AFA700A9D88B /* NXTabBar.m */; };
 		E12FD39D06E1E6052231B581 /* Pods_DNMainFramework_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1773D586D90F7B8FC05CBE9E /* Pods_DNMainFramework_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,8 +43,8 @@
 /* Begin PBXFileReference section */
 		082056FF205EFDD170CAD4D2 /* Pods-DNMainFramework_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNMainFramework_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-DNMainFramework_Example/Pods-DNMainFramework_Example.release.xcconfig"; sourceTree = "<group>"; };
 		1773D586D90F7B8FC05CBE9E /* Pods_DNMainFramework_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DNMainFramework_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		34C8CE759364E78A4F80690F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		382BD3FF61450AB03E75CBB7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		34C8CE759364E78A4F80690F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		382BD3FF61450AB03E75CBB7 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		3EDC00972C2FC12F3D1551D2 /* Pods-DNMainFramework_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNMainFramework_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DNMainFramework_Tests/Pods-DNMainFramework_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* DNMainFramework_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DNMainFramework_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -64,7 +68,15 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8120126414F589BE4EE213D4 /* Pods-DNMainFramework_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNMainFramework_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DNMainFramework_Tests/Pods-DNMainFramework_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AD8EDE549520B15A0B8D7D3F /* DNMainFramework.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = DNMainFramework.podspec; path = ../DNMainFramework.podspec; sourceTree = "<group>"; };
+		AD8EDE549520B15A0B8D7D3F /* DNMainFramework.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = DNMainFramework.podspec; path = ../DNMainFramework.podspec; sourceTree = "<group>"; };
+		B189FB11214796C400A9D88B /* DNHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNHomeViewController.h; sourceTree = "<group>"; };
+		B189FB12214796C400A9D88B /* DNHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNHomeViewController.m; sourceTree = "<group>"; };
+		B189FB14214796CE00A9D88B /* DNGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNGameViewController.h; sourceTree = "<group>"; };
+		B189FB15214796CE00A9D88B /* DNGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNGameViewController.m; sourceTree = "<group>"; };
+		B189FB17214796D800A9D88B /* DNMeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DNMeViewController.h; sourceTree = "<group>"; };
+		B189FB18214796D800A9D88B /* DNMeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DNMeViewController.m; sourceTree = "<group>"; };
+		B189FB1A2147AFA700A9D88B /* NXTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXTabBar.m; sourceTree = "<group>"; };
+		B189FB1B2147AFA800A9D88B /* NXTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXTabBar.h; sourceTree = "<group>"; };
 		B8EB9D141D45CF1F42D0862F /* Pods_DNMainFramework_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DNMainFramework_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5A48C9843E20C956687BBD /* Pods-DNMainFramework_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DNMainFramework_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DNMainFramework_Example/Pods-DNMainFramework_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,11 +155,19 @@
 		6003F593195388D20070C39A /* Example for DNMainFramework */ = {
 			isa = PBXGroup;
 			children = (
+				B189FB1B2147AFA800A9D88B /* NXTabBar.h */,
+				B189FB1A2147AFA700A9D88B /* NXTabBar.m */,
 				6003F59C195388D20070C39A /* DNAppDelegate.h */,
 				6003F59D195388D20070C39A /* DNAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* DNViewController.h */,
 				6003F5A6195388D20070C39A /* DNViewController.m */,
+				B189FB11214796C400A9D88B /* DNHomeViewController.h */,
+				B189FB12214796C400A9D88B /* DNHomeViewController.m */,
+				B189FB14214796CE00A9D88B /* DNGameViewController.h */,
+				B189FB15214796CE00A9D88B /* DNGameViewController.m */,
+				B189FB17214796D800A9D88B /* DNMeViewController.h */,
+				B189FB18214796D800A9D88B /* DNMeViewController.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -406,6 +426,10 @@
 				6003F59E195388D20070C39A /* DNAppDelegate.m in Sources */,
 				6003F5A7195388D20070C39A /* DNViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				B189FB13214796C400A9D88B /* DNHomeViewController.m in Sources */,
+				B189FB19214796D800A9D88B /* DNMeViewController.m in Sources */,
+				B189FB1C2147AFA800A9D88B /* NXTabBar.m in Sources */,
+				B189FB16214796CE00A9D88B /* DNGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,13 +7,57 @@
 //
 
 #import "DNAppDelegate.h"
+#import <DNMainFramework/MainFrameworkAPI.h>
+#import "DNHomeViewController.h"
+#import "DNGameViewController.h"
+#import "DNMeViewController.h"
+#import "NXTabBar.h"
 
 @implementation DNAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    DNHomeViewController *vc1 = [[DNHomeViewController alloc] init];
+    DNMeViewController *vc4 = [[DNMeViewController alloc] init];
+    DNGameViewController *vc2 = [[DNGameViewController alloc] init];
+    DNMeViewController *vc3 = [[DNMeViewController alloc] init];
+    
+    [[MainFrameworkAPI sharedInstance] addChildContollers:@[vc1,vc4,vc2,vc3] titles:@[@"首页",@"游戏库",@"期待",@"我的"] imagesNormal:@[@"tabbar_home",@"tabbar_gamelib",@"tabbar_expect_list",@"tabbar_me"] imagesSeleted:@[@"tabbar_home_sel",@"tabbar_gamelib_sel",@"tabbar_expect_list_sel",@"tabbar_me_sel"]];
+    
+    [[MainFrameworkAPI sharedInstance] updateTabBarWithConfig:^(NXTabBarConfig *config) {
+        config.style = TabBarStyleCustom;
+        config.globalBackgroundColor = [UIColor whiteColor];
+        config.titleColorNormal = [UIColor orangeColor];
+        config.titleColorSelected = [UIColor darkGrayColor];
+        config.font = [UIFont systemFontOfSize:12];
+    }];
+    
+    [[MainFrameworkAPI sharedInstance] updateNavWithConfig:^(NavigationConfig *config) {
+        
+        config.globalBackgroundColor = [UIColor whiteColor];
+        config.titleColor = [UIColor greenColor];
+        config.titleFont = [UIFont systemFontOfSize:16];
+        config.itemColor = [UIColor purpleColor];
+    }];
+    
+    
+    NXTabBar *tabBar = [[NXTabBar alloc] init];
+    [tabBar setCenterIcon:[UIImage imageNamed:@"tabbar_np_playnon"]];
+    [tabBar setCenterIconClickBlock:^{
+        NSLog(@"#### 点击我干嘛 ####");
+    }];
+    
+    self.window.rootViewController = [[MainFrameworkAPI sharedInstance] rootTabBarControllerAndCustomTabBar:tabBar];
     return YES;
+}
+
+- (UIWindow *)window {
+    if (_window == nil) {
+        _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        _window.backgroundColor = [UIColor whiteColor];
+        [_window makeKeyAndVisible];
+    }
+    return _window;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

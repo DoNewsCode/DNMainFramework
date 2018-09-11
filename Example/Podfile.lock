@@ -1,0 +1,16 @@
+PODS:
+  - DNMainFramework (0.1.0)
+
+DEPENDENCIES:
+  - DNMainFramework (from `../`)
+
+EXTERNAL SOURCES:
+  DNMainFramework:
+    :path: ../
+
+SPEC CHECKSUMS:
+  DNMainFramework: fd76c8240253dd6193895ec97d32a7bcb6fb2721
+
+PODFILE CHECKSUM: 32f01f09e441cbb7af5923f03c287cb718b18ec6
+
+COCOAPODS: 1.4.0
