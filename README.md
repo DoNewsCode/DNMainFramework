@@ -71,7 +71,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
     
 ```
 
-![](./images/img2.png)
+![](./images/img3.png)
 
 **同样 可以更新导航的样式**
 
