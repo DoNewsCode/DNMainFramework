@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'DNMainFramework_Example' do
+  pod 'DNMainFramework', :path => '../'
+
+  target 'DNMainFramework_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
