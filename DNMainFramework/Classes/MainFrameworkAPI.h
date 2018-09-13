@@ -47,13 +47,23 @@
 - (void)addChildContollers:(NSArray <UIViewController *> *)controllers titles:(NSArray <NSString *> *)titles imagesNormal:(NSArray <NSString *> *)imagesNormal imagesSeleted:(NSArray <NSString *> *)imagesSeleted inBundle:(NSString *)bundle;
 
 /**
- 更新tabbar的配置信息
+ 更新tabbar的默认配置信息
  */
 - (void)updateTabBarWithConfig:(void(^)(NXTabBarConfig *config))configBlock;
 
 /**
- 更新nav的配置信息
+ 切换模式是更新tabbar信息
+ */
+- (void)updateTabBarWithConfigWhenSwitchMode:(void(^)(NXTabBarConfig *config))configBlock;
+
+/**
+ 更新nav的默认配置信息
  */
 - (void)updateNavWithConfig:(void(^)(NavigationConfig *config))configBlock;
+
+/**
+ 切换模式是更新Nav信息
+ */
+- (void)updateNavBarWithConfigWhenSwitchMode:(void(^)(NavigationConfig *config))configBlock;
 
 @end

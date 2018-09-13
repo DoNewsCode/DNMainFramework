@@ -18,6 +18,8 @@
 @property (nonatomic, copy) NSString *bundle;
 @property (nonatomic, copy) void (^configTabBarBlock)(NXTabBarConfig *config);
 @property (nonatomic, copy) void (^configNavBarBlock)(NavigationConfig *config);
+//@property (nonatomic, strong) NavigationConfig *config;
+@property (nonatomic, strong) NXTabBarController *tabVC;
 
 @end
 
@@ -49,9 +51,10 @@
     return [self rootTabBarControllerAndCustomTabBar:nil];
 }
 
+
 - (UITabBarController *)rootTabBarControllerAndCustomTabBar:(UITabBar *)customBar {
-    
     NXTabBarController *tab = [[NXTabBarController alloc] initWithCustomTabBar:customBar];
+    self.tabVC = tab;
     NSString *bundlePath = [[NSBundle mainBundle] pathForResource:self.bundle ofType:@"bundle"];
     
     if(bundlePath) {
@@ -59,8 +62,10 @@
     } else {
         [tab addChildContollers:self.controllers titles:self.titles imagesNormal:self.imagesNormal imagesSeleted:self.imagesSeleted];
     }
+    
     [tab updateWithConfig:self.configTabBarBlock];
     [tab updateNavBarWithConfig:self.configNavBarBlock];
+    
     return tab;
 }
 
@@ -70,9 +75,21 @@
     }
 }
 
+- (void)updateTabBarWithConfigWhenSwitchMode:(void (^)(NXTabBarConfig *))configBlock {
+    if (configBlock) {
+         [self.tabVC updateWithConfig:configBlock];
+    }
+}
+
 - (void)updateNavWithConfig:(void (^)(NavigationConfig *))configBlock {
     if (configBlock) {
         self.configNavBarBlock = configBlock;
+    }
+}
+
+- (void)updateNavBarWithConfigWhenSwitchMode:(void (^)(NavigationConfig *))configBlock {
+    if (configBlock) {
+        [self.tabVC updateNavBarWithConfig:configBlock];
     }
 }
 

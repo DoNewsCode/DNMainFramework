@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self p_setTabBarWithConfig:self.config];
-    [self p_setNavWithConfig:self.navConfig];
+//    [self p_setNavWithConfig:self.navConfig];
     
 //    UITabBar *tabbar = [UITabBar appearance];
 //    [tabbar setBackgroundImage:[UIImage new]];
@@ -91,33 +91,41 @@
 
 - (void)p_setNavWithConfig:(NavigationConfig *)config {
     
-    if (config.globalBackgroundImage) {
-        [[UINavigationBar appearance] setBackgroundImage:config.globalBackgroundImage forBarMetrics:UIBarMetricsDefault];
-    } else {
-        [[UINavigationBar appearance] setBarTintColor:config.globalBackgroundColor];
-    }
-    [UINavigationBar appearance].tintColor = config.itemColor;
-    
-    
-    NSMutableDictionary *itemAttrDict = @{}.mutableCopy;
-    if (config.itemColor) {
-        [itemAttrDict setObject:config.itemColor forKey:NSForegroundColorAttributeName];
-    }
-    if (config.itemFont) {
-         [itemAttrDict setObject:config.itemFont forKey:NSFontAttributeName];
-    }
-    // 设置导航上item按钮的文字颜色和大小
-    [[UIBarButtonItem appearance] setTitleTextAttributes:itemAttrDict forState:UIControlStateNormal];
-    
-    NSMutableDictionary *attrDict = @{}.mutableCopy;
-    if (config.titleFont) {
-        [attrDict setObject:config.titleFont forKey:NSFontAttributeName];
-    }
-    if (config.titleColor) {
-        [attrDict setObject:config.titleColor forKey:NSForegroundColorAttributeName];
+    if (self.childViewControllers) {
+        for (UIViewController *vc in self.childViewControllers) {
+            if ([vc isMemberOfClass:[NXNavigationController class]]) {
+                NXNavigationController *nav = (NXNavigationController *)vc;
+                if (config.globalBackgroundImage) {
+                    [nav.navigationBar setBackgroundImage:config.globalBackgroundImage forBarMetrics:UIBarMetricsDefault];
+                } else {
+                    nav.navigationBar.barTintColor = config.globalBackgroundColor;
+                }
+                
+                nav.navigationBar.tintColor = config.itemColor;
+                NSMutableDictionary *attrDict = @{}.mutableCopy;
+                if (config.titleFont) {
+                    [attrDict setObject:config.titleFont forKey:NSFontAttributeName];
+                }
+                if (config.titleColor) {
+                    [attrDict setObject:config.titleColor forKey:NSForegroundColorAttributeName];
+                }
+                [nav.navigationBar setTitleTextAttributes:attrDict.copy];
+            }
+        }
     }
     
-    [[UINavigationBar appearance] setTitleTextAttributes:attrDict.copy];
+    
+   
+//    [UINavigationBar appearance].tintColor = config.itemColor;
+//    NSMutableDictionary *attrDict = @{}.mutableCopy;
+//    if (config.titleFont) {
+//        [attrDict setObject:config.titleFont forKey:NSFontAttributeName];
+//    }
+//    if (config.titleColor) {
+//        [attrDict setObject:config.titleColor forKey:NSForegroundColorAttributeName];
+//    }
+    
+//    [[UINavigationBar appearance] setTitleTextAttributes:attrDict.copy];
 }
 
 
@@ -135,16 +143,42 @@
         [self setValue:self.customTabBar forKey:@"tabBar"];
     }
     
-    [UITabBar appearance].tintColor = config.tintColor;
     if (config.globalBackgroundImage) {
-        [[UITabBar appearance] setBackgroundImage:config.globalBackgroundImage];
+        [self.tabBar setBackgroundImage:config.globalBackgroundImage];
     } else {
-        [[UITabBar appearance] setBarTintColor:config.globalBackgroundColor];
+        [self.tabBar setBarTintColor:config.globalBackgroundColor];
     }
-    [UITabBar appearance].translucent = NO;
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : config.font, NSForegroundColorAttributeName : config.titleColorNormal} forState:UIControlStateNormal];
+   
     
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName : config.font, NSForegroundColorAttributeName : config.titleColorSelected} forState:UIControlStateSelected];
+    NSMutableDictionary *attrDictNormal = @{}.mutableCopy;
+    NSMutableDictionary *attrDictSeleted = @{}.mutableCopy;
+    
+    if (config.font) {
+        [attrDictNormal setObject:config.font forKey:NSFontAttributeName];
+        [attrDictSeleted setObject:config.font forKey:NSFontAttributeName];
+    }
+    
+    if (config.titleColorNormal) {
+        [attrDictNormal setObject:config.titleColorNormal forKey:NSForegroundColorAttributeName];
+    }
+    
+    if (config.titleColorSelected) {
+        [attrDictSeleted setObject:config.titleColorSelected forKey:NSForegroundColorAttributeName];
+    }
+    
+    if (self.tabBar.items) {
+        for (UITabBarItem *item in self.tabBar.items) {
+            [item setTitleTextAttributes:attrDictNormal forState:UIControlStateNormal];
+            [item setTitleTextAttributes:attrDictSeleted forState:UIControlStateSelected];
+        }
+    } else {
+        [[UITabBarItem appearance] setTitleTextAttributes:attrDictNormal forState:UIControlStateNormal];
+        [[UITabBarItem appearance] setTitleTextAttributes:attrDictSeleted forState:UIControlStateSelected];
+    }
+
+   
+     self.tabBar.translucent = NO;
+    
 }
 
 - (NXTabBarConfig *)config {

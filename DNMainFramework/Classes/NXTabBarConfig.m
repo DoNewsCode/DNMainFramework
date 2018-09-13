@@ -14,10 +14,6 @@
 
     NXTabBarConfig *config = [[NXTabBarConfig alloc] init];
     config.style = TabBarStyleDefault;
-    config.font = [UIFont systemFontOfSize:12];
-    config.titleColorNormal = [UIColor blueColor];
-    config.titleColorSelected = [UIColor redColor];
-    config.tintColor = [UIColor yellowColor];
     return config;
 }
 

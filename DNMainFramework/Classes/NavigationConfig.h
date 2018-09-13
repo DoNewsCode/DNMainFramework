@@ -10,7 +10,7 @@
 
 @interface NavigationConfig : NSObject
 
-+ (instancetype)sharedInstance;
++ (instancetype)sharedInstance ;
 
 /**
  设置nav的背景图片
@@ -38,18 +38,15 @@
 @property (nonatomic, strong) UIColor *itemColor;
 
 /**
- 设置item文字的大小
+ 设置item文字大小
  */
-@property (nonatomic, strong) UIFont *itemFont;
+@property (nonatomic, strong) UIColor *itemFont;
 
 /**
  设置nav底部线条颜色
  */
 @property (nonatomic, strong) UIColor *bottomLineColor;
 
-/**
- 设置返回按钮
- */
 @property (nonatomic, strong) UIImage *backIcon;
 
 - (void)updateNavWithConfig:(void(^)(NavigationConfig *config))configBlock;
